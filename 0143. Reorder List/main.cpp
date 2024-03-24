@@ -1,19 +1,13 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
+//https://leetcode.com/problems/reorder-list/
 
+#include <iostream>
 #include "../definitions.h"
 
 class Solution {
 public:
     ListNode * reverseLinkedList(ListNode * head){
+        if(!head) return NULL;
+
         ListNode* current = head;
         ListNode *prev = NULL, *next = NULL;
         while (current) {
@@ -25,24 +19,25 @@ public:
         return prev;
     }
 
-    ListNode * halfLinkedList(ListNode * head){
-        ListNode* slow = head;
-        ListNode* fast = head;
-
+    ListNode* halfLinkedList(ListNode * head){
+        ListNode *slow = head;
+        ListNode *fast = head;
+        ListNode *prev = head;
         while(fast && fast->next){
+            prev = slow;
             fast = fast->next->next;
             slow = slow->next;
         }
+        prev->next = NULL;
         return slow;
     }
 
     void reorderList(ListNode* head) {
         if(!head || !head->next) return;
 
-        ListNode* reversedHalf = halfLinkedList(reverseLinkedList(head));
-
+        ListNode *reversedHalf = reverseLinkedList(halfLinkedList(head));
         while(reversedHalf) {
-            ListNode* nextNode = head->next;
+            ListNode  *nextNode = head->next;
             head->next = reversedHalf;
             head = reversedHalf;
             reversedHalf = nextNode;
