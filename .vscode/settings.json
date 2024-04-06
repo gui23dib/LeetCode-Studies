@@ -60,6 +60,7 @@
     ".env.*": "dotenv",
     ".prettierrc": "json",
     "*.css": "css",
-    "vector": "cpp"
+    "vector": "cpp",
+    "unordered_map": "cpp"
   }
 }
