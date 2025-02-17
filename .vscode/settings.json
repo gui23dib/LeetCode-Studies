@@ -60,8 +60,12 @@
     ".env.*": "dotenv",
     ".prettierrc": "json",
     "*.css": "css",
+    "*.py": "python",
     "vector": "cpp",
     "unordered_map": "cpp",
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "array": "cpp",
+    "initializer_list": "cpp",
+    "utility": "cpp"
   }
 }
